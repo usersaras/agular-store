@@ -10,6 +10,7 @@ import { StoreSingleItemComponent } from './components/store-single-item/store-s
 import { StoreComponent } from './components/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { UnautorizedComponent } from './components/unautorized/unautorized.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     StoreComponent,
     StoreSingleItemComponent,
     ProductCardComponent,
+    UnautorizedComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

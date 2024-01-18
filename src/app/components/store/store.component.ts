@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductRep } from 'src/app/models/Product.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { StoreService } from 'src/app/service/store.service';
 
 @Component({
