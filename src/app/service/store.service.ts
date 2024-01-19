@@ -1,17 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ProductRep } from '../models/Product.model';
+import { AjaxResponse, ajax } from 'rxjs/ajax';
+
+import { catchError } from 'rxjs/operators';
+import { throwError, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
-  baseUrl = 'https://fakestoreapi.com';
+  baseUrl = 'https://fakestoreapis.com';
 
-  constructor(private httpSerive: HttpClient) {}
+  constructor() {}
 
-  getPaginatedProducts(): Observable<ProductRep[]> {
-    return this.httpSerive.get<ProductRep[]>(`${this.baseUrl}/products`);
+  getPaginatedProducts(): Subject<any> {
+    const subject = new Subject();
+
+    const data = ajax<ProductRep[]>(`${this.baseUrl}/products`).pipe(
+      catchError((error) => {
+        subject.error('Something went wrong. Please try again later.');
+        return error;
+      })
+    );
+
+    data.subscribe(subject);
+
+    return subject;
   }
 }

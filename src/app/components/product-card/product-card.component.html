@@ -1,7 +1,7 @@
-<div class="card">
+<a class="card" [routerLink]="[item?.id]">
     <img src="{{ item?.image }}" />
     <div>
         <h5>{{ item?.title }} ({{ item?.category }})</h5>
         <p>${{ item?.price }}</p>
     </div>
-</div>
+</a>
